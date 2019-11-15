@@ -117,6 +117,14 @@ namespace Laboratorio_9_OOP_201920
             }
             
         }
+        public void DrawCard1(int cardId = 0)
+        {
+            Card tempCard = CreateTempCard(cardId);
+            hand.AddCard(tempCard);
+            deck.DestroyCard(cardId);
+
+
+        }
         public void PlayCard(int cardId, EnumType buffRow = EnumType.None)
         {
             

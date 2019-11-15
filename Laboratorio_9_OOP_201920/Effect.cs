@@ -148,21 +148,11 @@ namespace Laboratorio_9_OOP_201920
                         {
                             foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
                             {
-                                if (!card.Hero && card.Name == playedCard.Name) card.AttackPoints =card.AttackPoints*2;
+                                if (!card.Hero && card.Name == playedCard.Name) card.AttackPoints =card.AttackPoints+card.AttackPoints;
                             }
                         }
                     }
-                    foreach (EnumType type in buffLines)
-                    {
-
-                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
-                        {
-                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
-                            {
-                                if (!card.Hero && card.Name == playedCard.Name) card.AttackPoints = card.AttackPoints * 2;
-                            }
-                        }
-                    }
+                    
 
 
                     break;
@@ -170,15 +160,30 @@ namespace Laboratorio_9_OOP_201920
                     if (activePlayer.Id == 1)
                     {
                         board.AddCard(playedCard, 0);
-                        activePlayer.DrawCard();
-                        activePlayer.DrawCard();
+                        Console.WriteLine(activePlayer.Deck.Cards.Count);
+                        Console.ReadKey();
+                        Random random = new Random();
+                        for (int i = 0; i < 2; i++)
+                        {
+                            activePlayer.DrawCard1(random.Next(0, activePlayer.Deck.Cards.Count));
+                        }
+                        
+                        
+                        //activePlayer.DrawCard();//
                         
                     }
                     else
                     {
                         board.AddCard(playedCard, 1);
-                        activePlayer.DrawCard();
-                        activePlayer.DrawCard();
+                        Console.WriteLine(activePlayer.Deck.Cards.Count);
+                        Console.ReadKey();
+                        Random random = new Random();
+                        for (int i = 0; i < 2; i++)
+                        {
+                            activePlayer.DrawCard1(random.Next(0, activePlayer.Deck.Cards.Count));
+                        }
+                        
+                        //activePlayer.DrawCard();//
                     }
                     break;
 
