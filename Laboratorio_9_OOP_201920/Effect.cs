@@ -1,6 +1,9 @@
 ﻿using Laboratorio_9_OOP_201920.Cards;
 using Laboratorio_9_OOP_201920.Enums;
 using System.Collections.Generic;
+using System;
+
+using System.Text;
 
 namespace Laboratorio_9_OOP_201920
 {
@@ -88,20 +91,39 @@ namespace Laboratorio_9_OOP_201920
                     }
                     break;
                 case EnumEffect.buff:
-                        
-                    foreach (EnumType type in buffLines)
-                    {
 
-                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                    for (int i=0;i<1;i++)
+                    {
+                        
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(EnumType.buffmelee))
                         {
-                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][EnumType.melee])
                             {
-                            if (!card.Hero) card.AttackPoints =card.AttackPoints*2;
+                               
+                                if (!card.Hero) card.AttackPoints = card.AttackPoints+card.AttackPoints;
+                            }
+                        }
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(EnumType.buffrange))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][EnumType.range])
+                            {
+                                
+                                if (!card.Hero) card.AttackPoints = card.AttackPoints + card.AttackPoints;
+                            }
+                        }
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(EnumType.bufflongRange))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][EnumType.longRange])
+                            {
+                                
+                                if (!card.Hero) card.AttackPoints = card.AttackPoints + card.AttackPoints;
                             }
                         }
                     }
-
                     
+
+
+
 
                     break;
 
@@ -145,6 +167,19 @@ namespace Laboratorio_9_OOP_201920
 
                     break;
                 case EnumEffect.spy:
+                    if (activePlayer.Id == 1)
+                    {
+                        board.AddCard(playedCard, 0);
+                        activePlayer.DrawCard();
+                        activePlayer.DrawCard();
+                        
+                    }
+                    else
+                    {
+                        board.AddCard(playedCard, 1);
+                        activePlayer.DrawCard();
+                        activePlayer.DrawCard();
+                    }
                     break;
 
            

@@ -214,7 +214,16 @@ namespace Laboratorio_9_OOP_201920
                 {
                     OnCardPlayed(card);
                 }
+                
             }
+            if (board.PlayerCards[this.Id].ContainsKey(type))
+            {
+                foreach (Card card in board.PlayerCards[this.Id][type])
+                {
+                    OnCardPlayed(card);
+                }
+            }
+            
         }
     }
 }
