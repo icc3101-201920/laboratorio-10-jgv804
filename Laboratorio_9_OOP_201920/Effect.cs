@@ -106,6 +106,17 @@ namespace Laboratorio_9_OOP_201920
                     break;
 
                 case EnumEffect.moraleBoost:
+                    foreach (EnumType type in lines)
+                    {
+
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (!card.Hero && card.Name != playedCard.Name) card.AttackPoints += 1;
+                            }
+                        }
+                    }
                     break;
                 case EnumEffect.tightBond:
                     break;
