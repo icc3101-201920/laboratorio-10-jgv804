@@ -119,6 +119,30 @@ namespace Laboratorio_9_OOP_201920
                     }
                     break;
                 case EnumEffect.tightBond:
+                    foreach (EnumType type in lines)
+                    {
+
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (!card.Hero && card.Name == playedCard.Name) card.AttackPoints =card.AttackPoints*2;
+                            }
+                        }
+                    }
+                    foreach (EnumType type in buffLines)
+                    {
+
+                        if (board.PlayerCards[activePlayer.Id].ContainsKey(type))
+                        {
+                            foreach (CombatCard card in board.PlayerCards[activePlayer.Id][type])
+                            {
+                                if (!card.Hero && card.Name == playedCard.Name) card.AttackPoints = card.AttackPoints * 2;
+                            }
+                        }
+                    }
+
+
                     break;
                 case EnumEffect.spy:
                     break;
